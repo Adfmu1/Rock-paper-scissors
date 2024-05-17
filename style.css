@@ -1,0 +1,12 @@
+#choices {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;     
+}
+
+button {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    padding: 10px 20px;
+}
