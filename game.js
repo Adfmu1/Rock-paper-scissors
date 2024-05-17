@@ -1,8 +1,9 @@
+//select buttons
 const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
 
-//listeners for each option
+//listener for each button
 rockButton.addEventListener( "click", () => {
     playRound(rockButton.textContent, getComputerChoice());
 } );
@@ -14,6 +15,14 @@ paperButton.addEventListener( "click", () => {
 scissorsButton.addEventListener( "click", () => {
     playRound(scissorsButton.textContent, getComputerChoice());
 } );
+
+//select score display and result of a round
+const computerScoreDisplay = document.querySelector("#computer-score");
+const playerScoreDisplay = document.querySelector("#player-score");
+const roundResult = document.querySelector("#result");
+
+computerScoreDisplay.textContent = "Computer: 0";
+playerScoreDisplay.textContent = "Player: 0";
 
 //init scores and round number
 let computerScore = 0;
@@ -40,23 +49,25 @@ function getComputerChoice () {
 
 //play round
 function playRound (humanChoice, computerChoice) {
-    
+
     const humanSelection = humanChoice.toLowerCase();
 
     //declare round winner
     if (humanSelection === computerChoice) {
-        console.log("Its a draw!");
+        roundResult.textContent = "Its a draw!";
     }
     else if ((humanSelection === "rock" && computerChoice === "scissors") || 
             (humanSelection === "scissors" && computerChoice === "paper") || 
             (humanSelection === "paper" && computerChoice === "rock")) {
-        console.log(`You win! ${humanSelection} beats ${computerChoice}`);
+        roundResult.textContent = `You win! ${humanSelection} beats ${computerChoice}`;
         playerScore++;
     }
     else {
-        console.log(`You lose! ${computerChoice} beats ${humanSelection}`);
+        roundResult.textContent = `You lose! ${computerChoice} beats ${humanSelection}`;
         computerScore++;
     }
     //display current score for human and computer
-    console.log(`Current score is: Computer: ${computerScore}, Human: ${playerScore}`)
+    computerScoreDisplay.textContent = `Computer ${computerScore}`;
+    playerScoreDisplay.textContent = `Player ${playerScore}`;
+
 }
