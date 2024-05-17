@@ -29,13 +29,7 @@ let computerScore = 0;
 let playerScore = 0;
 let roundNumber = 0;
 
-//declare a winner
-if (playerScore > computerScore) {
-    console.log("Player Wins the game!")
-}
-else {
-    console.log("Computer Wins the game!")
-}
+let gameIsOn = true;
 
 function getComputerChoice () {
     const randomNumber = Math.floor(Math.random() * 10)
@@ -49,6 +43,11 @@ function getComputerChoice () {
 
 //play round
 function playRound (humanChoice, computerChoice) {
+
+    //check if game is still on
+    if (!gameIsOn) {
+        return ;
+    }
 
     const humanSelection = humanChoice.toLowerCase();
 
@@ -69,5 +68,16 @@ function playRound (humanChoice, computerChoice) {
     //display current score for human and computer
     computerScoreDisplay.textContent = `Computer ${computerScore}`;
     playerScoreDisplay.textContent = `Player ${playerScore}`;
-
+    
+    //declare a winner of a game and end the game
+    if (playerScore > computerScore && playerScore >= 5) {
+        roundResult.textContent = "Player Wins the game!";
+        roundResult.style.backgroundColor = "red";
+        gameIsOn = false;
+    }
+    else if (playerScore < computerScore && computerScore >= 5) {
+        roundResult.textContent = "Computer Wins the game!";
+        roundResult.style.backgroundColor = "red";
+        gameIsOn = false;
+    }
 }
