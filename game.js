@@ -7,12 +7,10 @@ function playGame () {
     let roundNumber = 0;
 
     //play game
-    while (roundNumber < 5) {
-        const computerChoice = getComputerChoice();
-        const humanChoice = getHumanChoice();
-        playRound(humanChoice, computerChoice);
-        roundNumber++;
-    }
+    const computerChoice = getComputerChoice();
+    const humanChoice = getHumanChoice();
+    playRound(humanChoice, computerChoice);
+    roundNumber++;
 
     //declare a player
     if (playerScore > computerScore) {
